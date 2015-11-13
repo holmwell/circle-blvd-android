@@ -45,7 +45,7 @@ angular.module('starter.controllers')
 			}
 			$scope.message = "Success!";
 
-			Session.member = member;
+			Session.setMember(member);
 			$state.go('circles')
 		});
 	};

@@ -2,7 +2,7 @@ angular.module('starter.controllers')
 .controller('CirclesCtrl', function ($scope, $http, $state, Session) {
 	
 //	var server = "http://localhost:3000";
-	var member = Session.member;
+	var member = Session.getMember();
 	if (!member) {
 		// TODO: Not signed in. Figure it out.
 		console.log("Member not set");
