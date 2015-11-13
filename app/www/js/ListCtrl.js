@@ -1,4 +1,4 @@
-angular.module('starter.controllers')
+angular.module('circle-blvd.controllers')
 .controller('ListCtrl', function ($scope, $http, $state, $stateParams, Session) {
 	
 	var member = Session.getMember();

@@ -1,4 +1,4 @@
-angular.module('starter.services')
+angular.module('circle-blvd.services')
 
 // LocalStorage service suggestion from Ionic
 // http://learn.ionicframework.com/formulas/localstorage/

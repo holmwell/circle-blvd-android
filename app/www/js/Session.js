@@ -1,4 +1,4 @@
-angular.module('starter.services')
+angular.module('circle-blvd.services')
 
 .factory('Session', function (LocalStorage) {
 	return {

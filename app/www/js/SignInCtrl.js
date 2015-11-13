@@ -1,4 +1,4 @@
-angular.module('starter.controllers')
+angular.module('circle-blvd.controllers')
 .controller('SignInCtrl', function ($scope, $http, $state, Session) {
 	
 	$scope.member = {};

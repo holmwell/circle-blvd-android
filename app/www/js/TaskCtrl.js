@@ -1,4 +1,4 @@
-angular.module('starter.controllers')
+angular.module('circle-blvd.controllers')
 .controller('TaskCtrl', function ($scope, $http, $stateParams, Session) {
 	
 	var member = Session.getMember();

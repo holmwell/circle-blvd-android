@@ -1,4 +1,4 @@
-angular.module('starter.controllers')
+angular.module('circle-blvd.controllers')
 .controller('CirclesCtrl', function ($scope, $http, $state, Session) {
 	
 //	var server = "http://localhost:3000";
