@@ -1,45 +1,40 @@
 angular.module('circle-blvd.controllers')
-.controller('ListCtrl', function ($scope, $http, $state, $stateParams, Session) {
+.controller('ListCtrl', function ($scope, $stateParams, Session, CircleBlvdClient) {
 	
-	var member = Session.getMember();
-	if (!member) {
-		// TODO: Not signed in. Figure it out.
-		console.log("Member not set");
-		return;
-	}
-
 	var listId = $stateParams.listId;
 	if (!listId) {
 		// TODO: No list specified
-		console.log("No list specified in URL");
+		console.log("No list ID specified in URL");
 		return;
 	}
 
 	var list = [];
 
-	$http.get('http://localhost:3000/data/' + listId + '/stories')
-	.success(function (storyList) {
+	CircleBlvdClient.getList(listId, function (err, result) {
+		if (err) {
+			// TODO: Fail
+			console.log(err);
+			return;
+		}
+		
+		var taskTable = result.taskTable;
+		// Save story list to session
+		Session.setActiveList(taskTable);
 
-		$http.get('http://localhost:3000/data/' + listId + '/first-story')
-		.success(function (firstStory) {
+		// Basic 'build list' algorithm
+		list.push(result.firstTask);
+		var story = result.firstTask;
+		var nextStory = taskTable[story.nextId];
 
-			// Save story list to session
-			Session.setActiveList(storyList);
+		// TODO: This will break if there is a loop in the list.
+		// TODO: Make a library for this.
+		while (nextStory) {
+			list.push(nextStory);
+			story = nextStory;
+			nextStory = taskTable[story.nextId];
+		}
 
-			// Basic 'build list' algorithm
-			list.push(firstStory);
-			var story = firstStory;
-			var nextStory = storyList[story.nextId];
-
-			// TODO: This will break if there is a loop in the list.
-			while (nextStory) {
-				list.push(nextStory);
-				story = nextStory;
-				nextStory = storyList[story.nextId];
-			}
-
-			$scope.list = list;
-		})
+		$scope.list = list;
 	});
 
 });
