@@ -1,5 +1,9 @@
-<ion-view view-title="Circle Blvd.">
+<ion-view view-title="Circles">
   <ion-content>
-    <div>Circles</div>
+  	<ion-list>
+  		<ion-item ng-repeat="circle in circleList">
+  			{{circle.circleName}}
+  		</ion-item>
+  	</ion-list>
   </ion-content>
 </ion-view>
