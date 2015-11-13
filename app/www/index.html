@@ -21,30 +21,23 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/SignInCtrl.js"></script>
+    <script src="js/CirclesCtrl.js"></script> 
+    <script src="js/Session.js"></script>
+
   </head>
   <body ng-app="starter">
-
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Circle Blvd.</h1>
-      </ion-header-bar>
-      <ion-content>
-        <div ng-controller="SignInCtrl">
-          <label class="item item-input">
-            <span class="input-label">Email address</span>
-            <input type="text" ng-model="member.email"/>
-          </label>
-          <label class="item item-input">
-            <span class="input-label">Password</span>
-            <input type="password" ng-model="member.password"/>
-          </label>
-          <button class="button" ng-click="signIn(member.email, member.password)">
-            Sign in
-          </button>
-
-          <p>{{message}}</p>
-        </div>
-      </ion-content>
-    </ion-pane>
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
   </body>
 </html>

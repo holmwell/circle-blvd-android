@@ -1,0 +1,17 @@
+<ion-view view-title="Circle Blvd.">
+  <ion-content>
+    <label class="item item-input">
+      <span class="input-label">Email address</span>
+      <input type="text" ng-model="member.email"/>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Password</span>
+      <input type="password" ng-model="member.password"/>
+    </label>
+    <button class="button" ng-click="signIn(member.email, member.password)">
+      Sign in
+    </button>
+
+    <p>{{message}}</p>
+  </ion-content>
+</ion-view>

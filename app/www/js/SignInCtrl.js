@@ -1,5 +1,6 @@
-angular.module('app.controllers', [])
-.controller('SignInCtrl', function ($scope, $http) {
+angular.module('starter.controllers')
+.controller('SignInCtrl', function ($scope, $http, $state, Session) {
+	
 	$scope.member = {};
 	var server = "http://localhost:3000";
 
@@ -36,11 +37,16 @@ angular.module('app.controllers', [])
 				switch (err.status) {
 					case 401:
 						$scope.message = "Sorry, please try something else.";
+					default: 
+						$scope.message = "Sorry, our computers aren't working right now."
 				}
 				console.log(err);
 				return;
 			}
 			$scope.message = "Success!";
+
+			Session.member = member;
+			$state.go('circles')
 		});
 	};
 });
