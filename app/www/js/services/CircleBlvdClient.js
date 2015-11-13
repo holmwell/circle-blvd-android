@@ -4,12 +4,11 @@ angular.module('circle-blvd.services')
 
 	var server = "http://localhost:3000";
 
-	var handleError = function (handler, callback) {
+	var handleError = function (callback) {
 		return function (data, status) {
-			// TODO: Check that this makese sense
-			// We might want to do something like this instead:
-			//   var err = new Error(data);
-			callback(data);
+			var err = new Error(data);
+			err.status = status;
+			callback(err);
 		};
 	};
 
@@ -30,9 +29,28 @@ angular.module('circle-blvd.services')
 
 					callback(null, result);
 				})
-				.error(handleError)
+				.error(handleError(callback))
 			})
-			.error(handleError, callback);
+			.error(handleError(callback));
+		},
+
+		signIn: function (email, password, callback) {
+			var xsrf = "";
+			xsrf += encodeURIComponent("email") + "=" + encodeURIComponent(email) + "&";
+			xsrf += encodeURIComponent("password") + "=" + encodeURIComponent(password);
+
+			var request = {
+				method: 'POST',
+				url: server + '/auth/signin',
+				data: xsrf,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			};      
+
+			$http(request)
+			.success(function (user, status) {
+				callback(null, user);
+			})
+			.error(handleError(callback));
 		}
 	}
 });
