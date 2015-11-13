@@ -23,6 +23,9 @@ angular.module('starter.controllers')
 		$http.get('http://localhost:3000/data/' + listId + '/first-story')
 		.success(function (firstStory) {
 
+			// Save story list to session
+			Session.setActiveList(storyList);
+
 			// Basic 'build list' algorithm
 			list.push(firstStory);
 			var story = firstStory;

@@ -1,7 +1,7 @@
 <ion-view view-title="{{listName}}">
   <ion-content>
   	<ion-list>
-  		<ion-item ng-repeat="task in list">
+  		<ion-item ng-repeat="task in list" href="#/task/{{task.id}}">
   			{{task.summary}}
   		</ion-item>
   	</ion-list>

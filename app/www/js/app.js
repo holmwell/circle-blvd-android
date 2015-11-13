@@ -44,7 +44,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/list/:listId',
     templateUrl: 'templates/list.html',
     controller: 'ListCtrl'
-  });
+  })
+
+  .state('task', {
+    url: '/task/:taskId',
+    templateUrl: 'templates/task.html',
+    controller: 'TaskCtrl'
+  })
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/signin');
