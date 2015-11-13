@@ -1,7 +1,7 @@
 <ion-view view-title="Circles">
   <ion-content>
   	<ion-list>
-  		<ion-item ng-repeat="circle in circleList">
+  		<ion-item ng-repeat="circle in circleList" href="#/list/{{circle.circle}}">
   			{{circle.circleName}}
   		</ion-item>
   	</ion-list>

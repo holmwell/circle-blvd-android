@@ -18,6 +18,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
+.config(['$httpProvider', function ($httpProvider) {
+  $httpProvider.defaults.withCredentials = true;
+}])
+
 .config(function ($stateProvider, $urlRouterProvider) {
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -34,6 +38,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/circles',
     templateUrl: 'templates/circles.html',
     controller: 'CirclesCtrl'
+  })
+
+  .state('list', {
+    url: '/list/:listId',
+    templateUrl: 'templates/list.html',
+    controller: 'ListCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback
