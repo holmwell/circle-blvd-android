@@ -28,8 +28,10 @@ angular.module('circle-blvd.controllers')
 				switch (err.status) {
 					case 401:
 						$scope.message = "Sorry, please try something else.";
+						break;
 					default: 
-						$scope.message = "Sorry, our computers aren't working right now."
+						$scope.message = "Sorry, our computers aren't working right now.";
+						break;
 				}
 				console.log(err);
 				return;
