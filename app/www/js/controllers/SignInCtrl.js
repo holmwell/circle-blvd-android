@@ -1,12 +1,12 @@
 angular.module('circle-blvd.controllers')
-.controller('SignInCtrl', function ($scope, $state, Session, CircleBlvdClient) {
+.controller('SignInCtrl', function ($scope, $state, CircleBlvdClient) {
 	
 	$scope.member = {};
 
 	$scope.signIn = function (email, password) {
 		$scope.message = "";
 
-		CircleBlvdClient.signIn(email, password, function (err, member) {
+		CircleBlvdClient.setMember(email, password, function (err, member) {
 			if (err) {
 				switch (err.status) {
 					case 401:
@@ -18,8 +18,6 @@ angular.module('circle-blvd.controllers')
 				return;
 			}
 			$scope.message = "Success!";
-
-			Session.setMember(member);
 			$state.go('circles')
 		});
 	};

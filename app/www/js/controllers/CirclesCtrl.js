@@ -1,8 +1,7 @@
 angular.module('circle-blvd.controllers')
-.controller('CirclesCtrl', function ($scope, $http, $state, Session) {
+.controller('CirclesCtrl', function ($scope, $http, $state, CircleBlvdClient) {
 	
-//	var server = "http://localhost:3000";
-	var member = Session.getMember();
+	var member = CircleBlvdClient.getMember();
 	if (!member) {
 		// TODO: Not signed in. Figure it out.
 		console.log("Member not set");
@@ -10,8 +9,6 @@ angular.module('circle-blvd.controllers')
 	}
 
 	var circles = {};
-
-	var membership;
 	var memberships = member.memberships;
 
 	member.memberships.forEach(function (membership) {

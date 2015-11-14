@@ -34,7 +34,7 @@ angular.module('circle-blvd.services')
 			.error(handleError(callback));
 		},
 
-		signIn: function (email, password, callback) {
+		setMember: function (email, password, callback) {
 			var xsrf = "";
 			xsrf += encodeURIComponent("email") + "=" + encodeURIComponent(email) + "&";
 			xsrf += encodeURIComponent("password") + "=" + encodeURIComponent(password);
@@ -47,10 +47,20 @@ angular.module('circle-blvd.services')
 			};      
 
 			$http(request)
-			.success(function (user, status) {
-				callback(null, user);
+			.success(function (member, status) {
+				// Save the user in the Session
+				//
+				// TODO: Should we modify the Session like this? This 
+				// design seems 'ok' but something about it doesn't feel right.
+				//
+				Session.setMember(member);
+				callback(null, member);
 			})
 			.error(handleError(callback));
+		},
+
+		getMember: function () {
+			return Session.getMember();
 		}
 	}
 });
