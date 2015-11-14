@@ -8,8 +8,6 @@ angular.module('circle-blvd.controllers')
 		return;
 	}
 
-	var list = [];
-
 	CircleBlvdClient.getList(listId, function (err, result) {
 		if (err) {
 			// TODO: Fail
@@ -18,23 +16,10 @@ angular.module('circle-blvd.controllers')
 		}
 		
 		var taskTable = result.taskTable;
-		// Save story list to session
+		// Save task data to session
 		Session.setActiveList(taskTable);
 
-		// Basic 'build list' algorithm
-		list.push(result.firstTask);
-		var story = result.firstTask;
-		var nextStory = taskTable[story.nextId];
-
-		// TODO: This will break if there is a loop in the list.
-		// TODO: Make a library for this.
-		while (nextStory) {
-			list.push(nextStory);
-			story = nextStory;
-			nextStory = taskTable[story.nextId];
-		}
-
+		var list = CircleBlvdClient.buildList(result.firstTask, result.taskTable);
 		$scope.list = list;
 	});
-
 });

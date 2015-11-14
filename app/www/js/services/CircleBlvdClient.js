@@ -34,6 +34,22 @@ angular.module('circle-blvd.services')
 			.error(handleError(callback));
 		},
 
+		buildList: function (firstTask, taskTable) {
+			var list = [];
+			// Basic 'build list' algorithm
+			list.push(firstTask);
+			var story = firstTask;
+			var nextStory = taskTable[story.nextId];
+
+			// TODO: This will break if there is a loop in the list.
+			while (nextStory) {
+				list.push(nextStory);
+				story = nextStory;
+				nextStory = taskTable[story.nextId];
+			}
+			return list;
+		},
+
 		setMember: function (email, password, callback) {
 			var xsrf = "";
 			xsrf += encodeURIComponent("email") + "=" + encodeURIComponent(email) + "&";
