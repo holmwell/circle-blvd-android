@@ -1,6 +1,6 @@
-<ion-view view-title="{{listName}}">
+<ion-view view-title="{{listName}}" class="task-list">
   <ion-content>
-  	<ion-list class="task-list">
+  	<ion-list>
   		<ion-item ng-repeat="task in list" 
   			class="item {{task.type}} {{task.meetingRelationship}} {{task.ownerRelationship}}" 
   			href="#/task/{{task.id}}">
