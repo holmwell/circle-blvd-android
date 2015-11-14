@@ -1,17 +1,36 @@
 <ion-view view-title="Circle Blvd.">
-  <ion-content>
-    <label class="item item-input">
-      <span class="input-label">Email address</span>
-      <input type="text" ng-model="member.email"/>
-    </label>
-    <label class="item item-input">
-      <span class="input-label">Password</span>
-      <input type="password" ng-model="member.password"/>
-    </label>
-    <button class="button" ng-click="signIn(member.email, member.password)">
-      Sign in
-    </button>
+  <ion-content class="sign-in">
+    <div class="logo-wrapper">
+      <img class="logo" src="img/circle-blvd-basic.png"/>
+    </div>
 
-    <p>{{message}}</p>
+    <h3 class="tagline">Project management for small&nbsp;teams.</h3>
+
+    <form ng-submit="signIn(member.email, member.password)">
+      <label class="item item-input">
+        <span class="input-label">Email address</span>
+        <input type="text" ng-model="member.email"/>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Password</span>
+        <input type="password" ng-model="member.password"/>
+      </label>
+
+      <div class="message row">
+        <p class="col-90">{{message}}</p>
+      </div>
+
+      <div class="button-wrapper">
+        <button type="submit" class="button" ng-click="signIn(member.email, member.password)">
+          Sign in
+        </button>
+      </div>
+    </form>
+
+    <div class="info row">
+      <p class="col-90">Welcome to Circle Blvd. If you need to create an account, please
+        go to circleblvd.org. </p>
+    </div>
+
   </ion-content>
 </ion-view>

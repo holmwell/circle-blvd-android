@@ -1,0 +1,53 @@
+.sign-in {
+	background-color: #999;
+}
+
+.sign-in .logo-wrapper {
+	margin-top: 2em;
+	margin-bottom: 0.25em;
+	text-align: center;
+}
+
+.sign-in .logo {
+	width: 50%;
+}
+
+.sign-in .tagline {
+	font-size: normal;
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: 1.1em;
+}
+
+.sign-in .item {
+	background-color: #444;
+	border-color: #999;
+}
+.sign-in .input-label,
+.sign-in input {
+	color: white;
+}
+
+.sign-in .message {
+	color: black;
+	margin-top: 0.75em;
+}
+
+.sign-in .button-wrapper {
+	margin-top: 3ex;
+	text-align: center;
+}
+.sign-in .button-wrapper button {
+	padding-left: 4ex;
+	padding-right: 4ex;
+}
+
+.sign-in .info {
+	margin-top: 2em;
+}
+.sign-in .col-90 {
+	margin: auto;
+}
+.sign-in button {
+	box-shadow: 1px 1px 1px 1px #666;
+}

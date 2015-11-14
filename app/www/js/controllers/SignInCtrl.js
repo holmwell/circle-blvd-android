@@ -3,8 +3,25 @@ angular.module('circle-blvd.controllers')
 	
 	$scope.member = {};
 
+	var memberInfoUpdated = function () {
+		$scope.message = undefined;
+	};
+
+	$scope.$watch('member.email', memberInfoUpdated);
+	$scope.$watch('member.password', memberInfoUpdated);
+
 	$scope.signIn = function (email, password) {
 		$scope.message = "";
+
+		if (!email) {
+			$scope.message = "Please enter your email address to continue."
+			return;
+		}
+
+		if (!password) {
+			$scope.message = "Please enter your password to continue."
+			return;
+		}
 
 		CircleBlvdClient.setMember(email, password, function (err, member) {
 			if (err) {
@@ -17,7 +34,6 @@ angular.module('circle-blvd.controllers')
 				console.log(err);
 				return;
 			}
-			$scope.message = "Success!";
 			$state.go('circles')
 		});
 	};
