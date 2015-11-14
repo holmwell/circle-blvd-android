@@ -41,7 +41,7 @@ angular.module('circle-blvd', ['ionic', 'circle-blvd.controllers', 'circle-blvd.
   })
 
   .state('list', {
-    url: '/list/:listId',
+    url: '/list/:listId/:listName',
     templateUrl: 'templates/list.html',
     controller: 'ListCtrl'
   })

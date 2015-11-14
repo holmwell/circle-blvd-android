@@ -1,13 +1,18 @@
 angular.module('circle-blvd.controllers')
 .controller('ListCtrl', function ($scope, $stateParams, Session, CircleBlvdClient) {
 	
-	// TODO: Get active circle name and display in the title.
-
 	var listId = $stateParams.listId;
+	var listName = $stateParams.listName;
+
 	if (!listId) {
 		// TODO: No list specified
 		console.log("No list ID specified in URL");
 		return;
+	}
+
+	if (!listName) {
+		// Don't care.
+		console.log("No list name specified in URL");
 	}
 
 	var member = CircleBlvdClient.getMember();
@@ -57,5 +62,6 @@ angular.module('circle-blvd.controllers')
 		});
 
 		$scope.list = list;
+		$scope.listName = listName;
 	});
 });

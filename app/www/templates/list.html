@@ -1,17 +1,18 @@
-<ion-view view-title="{{listName}}" class="task-list">
-  <ion-content>
-  	<ion-list>
-  		<ion-item ng-repeat="task in list" 
-  			class="item {{task.type}} {{task.meetingRelationship}} {{task.ownerRelationship}}" 
-  			href="#/task/{{task.id}}">
-  			<div class="row row-task">
-  				<div class="col-10 col-status">
-  					<img ng-if="task.status === 'done'" src="img/icon-circle.png" />
-  					<img class="icon-active" ng-if="task.status === 'active'" src="img/icon-half-circle.png" />
-  				</div>
-  				<div class="col-90 col-summary">{{task.summary}}</div>
-  			</div>
-  		</ion-item>
-  	</ion-list>
-  </ion-content>
+<ion-view class="task-list">
+	<ion-nav-title>{{listName}}</ion-nav-title>
+	<ion-content>
+		<ion-list>
+			<ion-item ng-repeat="task in list" 
+				class="item {{task.type}} {{task.meetingRelationship}} {{task.ownerRelationship}}" 
+				href="#/task/{{task.id}}">
+				<div class="row row-task">
+					<div class="col-10 col-status">
+						<img ng-if="task.status === 'done'" src="img/icon-circle.png" />
+						<img class="icon-active" ng-if="task.status === 'active'" src="img/icon-half-circle.png" />
+					</div>
+					<div class="col-90 col-summary">{{task.summary}}</div>
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
 </ion-view>
