@@ -10,6 +10,8 @@ angular.module('circle-blvd.controllers')
 		return;
 	}
 
+	var member = CircleBlvdClient.getMember();
+
 	CircleBlvdClient.getList(listId, function (err, result) {
 		if (err) {
 			// TODO: Fail
@@ -29,6 +31,12 @@ angular.module('circle-blvd.controllers')
 
 		angular.forEach(list, function (task) {
 			task.type = "task";
+
+			if (task.owner === member.name) {
+				task.ownerRelationship = "mine";
+			}
+
+
 			task.isBeforeNextMeeting = isBeforeNextMeeting;
 
 			if (task.isDeadline) {

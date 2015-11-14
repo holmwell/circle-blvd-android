@@ -1,0 +1,55 @@
+.task-list ion-content {
+	background-color: #ddd;
+}
+
+.task-list .task {
+	background-color: #eee;
+}
+
+.task-list .milepost.before-meeting {
+	background-color: gold;
+	color: black;
+}
+
+.task-list .next-meeting {
+	background-color: black;
+	color: white;
+}
+
+.task-list .task.after-meeting {
+	background-color: #f3f3f3;
+}
+
+.task-list .milepost {
+	background-color: #444;
+	color: white;
+}
+
+.task-list .mine {
+	border-right: dotted 3px #0088aa;
+	border-left: dotted 3px #0088aa;
+}
+
+.task-list .col-status {
+	text-align: center;
+	padding-top: 4px;
+	opacity: 0.6;
+}
+.task-list .col-summary {
+	padding-left: 1ex;
+	line-height: 33px;
+}
+.task-list .row-task {
+	padding: 0;
+}
+.task-list .task {
+	padding: 1ex;
+}
+.task-list .milepost, 
+.task-list .next-meeting {
+	padding: 1.25ex;
+}
+.task-list .icon-active {
+	margin-top: -0.5ex;
+	margin-left: 4px;
+}
