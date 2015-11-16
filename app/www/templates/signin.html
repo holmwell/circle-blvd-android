@@ -9,11 +9,11 @@
     <form ng-submit="signIn(member.email, member.password)">
       <label class="item item-input">
         <span class="input-label">Email address</span>
-        <input type="text" ng-model="member.email"/>
+        <input type="email" ng-model="member.email" tabIndex="1"/>
       </label>
       <label class="item item-input">
         <span class="input-label">Password</span>
-        <input type="password" ng-model="member.password"/>
+        <input type="password" ng-model="member.password" tabIndex="2"/>
       </label>
 
       <div class="message row">
