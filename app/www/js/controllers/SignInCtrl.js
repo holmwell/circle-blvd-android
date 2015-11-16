@@ -10,7 +10,12 @@ angular.module('circle-blvd.controllers')
 	$scope.$watch('member.email', memberInfoUpdated);
 	$scope.$watch('member.password', memberInfoUpdated);
 
+	var isSigningIn = false;
+
 	$scope.signIn = function (email, password) {
+		if (isSigningIn) {
+			return;
+		}
 		$scope.message = "";
 
 		if (!email) {
@@ -23,6 +28,7 @@ angular.module('circle-blvd.controllers')
 			return;
 		}
 
+		isSigningIn = true;
 		CircleBlvdClient.setMember(email, password, function (err, member) {
 			if (err) {
 				switch (err.status) {
@@ -34,9 +40,11 @@ angular.module('circle-blvd.controllers')
 						break;
 				}
 				console.log(err);
+				isSigningIn = false;
 				return;
 			}
-			$state.go('circles')
+			isSigningIn = false;
+			$state.go('circles');
 		});
 	};
 });
