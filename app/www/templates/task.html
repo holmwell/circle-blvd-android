@@ -1,8 +1,51 @@
-<ion-view view-title="Task">
+<ion-view view-title="Task" class="task">
   <ion-content>
-  	<p>{{task.summary}} 
-  		<span ng-if='task.owner'>@{{task.owner}}</span>
-  	</p>
-  	<p>{{task.description}}</p>
+  	<div class="row">
+  		<div class="col-90">
+  			<input type="text" ng-model="task.summary" 
+  			ng-model-options="{ updateOn: 'blur' }" ng-change="saveTask(task)"></input>
+
+  			<h5>Who's doing this?</h5>
+  			<!-- TODO: Turn into a spinner -->
+  			<input type="text" ng-model="task.owner"
+  			ng-model-options="{ updateOn: 'blur' }" ng-change="saveTask(task)"></input>
+
+  			<h5>What are the details?</h5>
+  			<textarea rows="3" ng-model="task.description"
+  			ng-model-options="{ updateOn: 'blur' }" ng-change="saveTask(task)"></textarea>
+
+  			<h5>Task progress?</h5>
+  			<div class="row">
+	  			<div class="col-33">
+	  				<button class="button" ng-click="setStatus('sad')">Help?</button>
+	  			</div>
+	  			<div class="col-33">
+	  				<button class="button" ng-click="setStatus('')">New</button>
+	  			</div>
+	  			<div class="col-33">
+	  				<button class="button" ng-click="setStatus('assigned')">Will do</button>
+	  			</div>
+	  		</div>
+	  		<div class="row">
+	  			<div class="col-50">
+	  				<button class="button" ng-click="setStatus('active')">On it</button>
+	  			</div>
+	  			<div class="col-50">
+	  				<button class="button" ng-click="setStatus('done')">Done</button>
+	  			</div>
+	  		</div>
+
+<!-- 	  		<h5>Questions or comments?</h5>
+	  		<div class="row">
+	  			<div class="col">
+	  				<button class="button">Add comment</button>
+	  			</div>
+	  			<div class="col">
+	  				<button class="button">Save</button>
+	  			</div>
+	  		</div> -->
+  		</div>
+
+  	</div>
   </ion-content>
 </ion-view>

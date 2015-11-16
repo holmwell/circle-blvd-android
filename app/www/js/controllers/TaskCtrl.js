@@ -1,5 +1,5 @@
 angular.module('circle-blvd.controllers')
-.controller('TaskCtrl', function ($scope, $http, $stateParams, Session) {
+.controller('TaskCtrl', function ($scope, $http, $stateParams, Session, CircleBlvdClient) {
 	
 	var member = Session.getMember();
 	if (!member) {
@@ -16,4 +16,18 @@ angular.module('circle-blvd.controllers')
 	}
 
 	$scope.task = list[$stateParams.taskId];
+
+	$scope.setStatus = function (status) {
+		$scope.task.status = status;
+		$scope.saveTask($scope.task);
+	};
+
+	$scope.saveTask = function (task) {
+		CircleBlvdClient.saveTask(task, function (err, task) {
+			if (err) {
+				console.log('Error: ' + err.message);
+				return;
+			}
+		});
+	};
 });

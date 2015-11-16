@@ -77,6 +77,16 @@ angular.module('circle-blvd.services')
 
 		getMember: function () {
 			return Session.getMember();
+		},
+
+		saveTask: function (task, callback) {
+			$http.put(server + '/data/story/', task)
+			.success(function (savedTask) {
+				if (callback) {
+					callback(null, savedTask);
+				}
+			})
+			.error(handleError(callback));
 		}
 	}
 });
