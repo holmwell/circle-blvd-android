@@ -7,6 +7,7 @@ angular.module('circle-blvd.services')
 
 	var handleError = function (callback) {
 		return function (data, status) {
+			console.log("Error: " + data);
 			var err = new Error(data);
 			err.status = status;
 			callback(err);
@@ -78,7 +79,7 @@ angular.module('circle-blvd.services')
 		},
 
 		getMember: function () {
-			return Session.member;
+			return Session.getMember();
 		},
 
 		saveTask: function (task, callback) {

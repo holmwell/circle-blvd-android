@@ -1,14 +1,14 @@
 angular.module('circle-blvd.controllers')
 .controller('TaskCtrl', function ($scope, $http, $stateParams, Session, CircleBlvdClient) {
 	
-	var member = Session.member;
+	var member = Session.getMember();
 	if (!member) {
 		// TODO: Not signed in. Figure it out.
 		console.log("Member not set");
 		return;
 	}
 
-	var list = Session.activeList;
+	var list = Session.getActiveList();
 	if (!list) {
 		// TODO: No active list. Figure it out.
 		console.log("Active list not set");
@@ -17,10 +17,14 @@ angular.module('circle-blvd.controllers')
 
 	var listId = $stateParams.listId;
 	var task = list[$stateParams.taskId];
+
+
 	$scope.task = task;
 
 	var isStatus = function (status) {
-		return task.status === status;
+		if (task && task.status) {
+			return task.status === status;
+		}
 	}
 
 	$scope.isSad = function () {
@@ -53,7 +57,7 @@ angular.module('circle-blvd.controllers')
 			}
 			// Save our state.
 			if (listId === task.listId || task.projectId) {
-				var list = Session.activeList;
+				var list = Session.getActiveList();
 				list[task.id] = task;
 				Session.saveActiveList(list);
 			}

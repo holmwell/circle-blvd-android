@@ -72,9 +72,9 @@ angular.module('circle-blvd.controllers')
 
 	$scope.$on("$stateChangeSuccess", function (e, toState) {
 		if (toState.name === 'list') {
-			if (Session.activeList && $scope.list) {
+			if (Session.getActiveList() && $scope.list) {
 				// We're returning to this page with new data. Let's update.
-				buildViewModel(firstTaskId, Session.activeList);
+				buildViewModel(firstTaskId, Session.getActiveList());
 			}
 		}
 	});

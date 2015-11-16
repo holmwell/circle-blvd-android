@@ -1,3 +1,5 @@
+"use strict";
+
 angular.module('circle-blvd.services')
 
 .factory('Session', function (LocalStorage) {
@@ -7,13 +9,17 @@ angular.module('circle-blvd.services')
 	return {
 		saveMember: function (member) {
 			localMember = member;
-			LocalStorage.setObject('circle-blvd-member', member);
+			LocalStorage.setObject('circle-blvd-member', localMember);
 		},
 		saveActiveList: function (list) {
 			localList = list;
 			LocalStorage.setObject('circle-blvd-active-list', list);
 		},
-		member: localMember,
-		activeList: localList
+		getMember: function () {
+			return localMember;
+		},
+		getActiveList: function () {
+			return localList;
+		}
 	}
 });
