@@ -15,7 +15,29 @@ angular.module('circle-blvd.controllers')
 		return;
 	}
 
-	$scope.task = list[$stateParams.taskId];
+	var task = list[$stateParams.taskId];
+	$scope.task = task;
+
+	var isStatus = function (status) {
+		return task.status === status;
+	}
+
+	$scope.isSad = function () {
+		return isStatus('sad');
+	};
+	$scope.isActive = function () {
+		return isStatus('active');
+	};
+	$scope.isNew = function () {
+		return isStatus('') || isStatus('new');
+	};
+	$scope.isAssigned = function () {
+		return isStatus('assigned');
+	};
+	$scope.isDone = function () {
+		return isStatus('done');
+	};
+
 
 	$scope.setStatus = function (status) {
 		$scope.task.status = status;

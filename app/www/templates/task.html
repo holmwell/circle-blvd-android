@@ -1,4 +1,4 @@
-<ion-view view-title="Task" class="task">
+<ion-view view-title="Task" class="task-page">
   <ion-content>
   	<div class="row">
   		<div class="col-90">
@@ -15,23 +15,41 @@
   			ng-model-options="{ updateOn: 'blur' }" ng-change="saveTask(task)"></textarea>
 
   			<h5>Task progress?</h5>
-  			<div class="row">
+  			<div class="row row-btn">
 	  			<div class="col-33">
-	  				<button class="button" ng-click="setStatus('sad')">Help?</button>
+	  				<button class="button btn-sad" 
+	  				ng-class="{ active: isSad() }" 
+	  				ng-click="setStatus('sad')">Help?</button>
 	  			</div>
-	  			<div class="col-33">
-	  				<button class="button" ng-click="setStatus('')">New</button>
+	  			<div class="col-33 give-space">
+	  				<button class="button btn-new" 
+	  				ng-class="{ active: isNew() }"
+	  				ng-click="setStatus('new')">New</button>
 	  			</div>
-	  			<div class="col-33">
-	  				<button class="button" ng-click="setStatus('assigned')">Will do</button>
+	  			<div class="col-33 give-space">
+	  				<button class="button btn-assigned" 
+	  				ng-class="{ active: isAssigned() }"
+	  				ng-click="setStatus('assigned')">Will do</button>
 	  			</div>
 	  		</div>
-	  		<div class="row">
+	  		<div class="row row-btn">
 	  			<div class="col-50">
-	  				<button class="button" ng-click="setStatus('active')">On it</button>
+	  				<button class="button btn-active" 
+	  				ng-class="{ active: isActive() }"
+	  				ng-click="setStatus('active')">
+	  					<span class="icon-status" 
+	  					ng-include="'img/icon-half-circle.svg'"></span>
+	  					On it
+	  				</button>
 	  			</div>
-	  			<div class="col-50">
-	  				<button class="button" ng-click="setStatus('done')">Done</button>
+	  			<div class="col-50 give-space fill-space">
+	  				<button class="button btn-done" 
+	  				ng-class="{ active: isDone() }"
+	  				ng-click="setStatus('done')">
+	  					<span class="icon-status" 
+	  					ng-include="'img/icon-circle.svg'"></span>
+	  					Done
+	  				</button>
 	  			</div>
 	  		</div>
 

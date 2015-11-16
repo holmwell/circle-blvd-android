@@ -1,0 +1,90 @@
+.task-page {
+	background-color: #eee;
+}
+
+.task-page .row, 
+.task-page .col-90 {
+	margin: auto;
+}
+
+.task-page input, textarea {
+	width: 100%;
+	background-color: transparent;
+	font-size: 16pt;
+}
+.task-page textarea {
+	margin-top: 0.75ex;
+}
+
+.task-page h5 {
+	font-weight: normal;
+	font-size: 11pt;
+	color: #444;
+	margin: 0;
+	margin-top: 2ex;
+}
+
+.task-page textarea {
+	width: 100%;
+}
+
+.task-page .row-btn {
+	padding-left: 0;
+}
+
+.task-page .give-space {
+	padding-left: 1ex;
+}
+
+.task-page button {
+	width: 100%;
+}
+.task-page .btn-done img {
+	vertical-align: middle;
+	margin-right: 1ex;
+	margin-top: -0.5ex;
+	opacity: 0.5;
+
+}
+
+.task-page .btn-active .icon-status,
+.task-page .btn-active.active .icon-status,
+.task-page .btn-done .icon-status,
+.task-page .btn-done.active .icon-status {
+	fill: transparent;
+	stroke: #ddd;
+	width: 3ex;
+	height: 3ex;
+	padding-top: 0.1ex;
+	margin-right: 0.5ex;
+	display: inline-block;
+	vertical-align: text-bottom;
+	opacity: 0.6
+}
+.task-page .btn-active .icon-status,
+.task-page .btn-done .icon-status {
+	stroke: #333;
+}
+.task-page .btn-active.active .icon-status,
+.task-page .btn-active .icon-status {
+	vertical-align: top;
+	margin-top: 0.25ex;
+}
+
+.task-page .btn-sad.active {
+	background-color: #a00;
+	color: white;
+}
+.task-page .btn-new.active,
+.task-page .btn-assigned.active {
+	background-color: gold;
+	color: #333;
+}
+.task-page .btn-active.active {
+	background-color: #608A43;
+	color: white;
+}
+.task-page .btn-done.active {
+	background-color: #606;
+	color: white;
+}
