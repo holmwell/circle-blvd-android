@@ -8,7 +8,7 @@ angular.module('circle-blvd.controllers')
 		return;
 	}
 
-	var list = Session.getActiveList();
+	var list = Session.activeList;
 	if (!list) {
 		// TODO: No active list. Figure it out.
 		console.log("Active list not set");
@@ -53,9 +53,9 @@ angular.module('circle-blvd.controllers')
 			}
 			// Save our state.
 			if (listId === task.listId || task.projectId) {
-				var list = Session.getActiveList();
+				var list = Session.activeList;
 				list[task.id] = task;
-				Session.setActiveList(list);				
+				Session.setActiveList(list);
 			}
 		});
 	};

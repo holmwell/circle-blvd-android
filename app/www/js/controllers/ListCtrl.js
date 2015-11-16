@@ -16,19 +16,10 @@ angular.module('circle-blvd.controllers')
 	}
 
 	var member = CircleBlvdClient.getMember();
+	var firstTaskId = undefined;
 
-	CircleBlvdClient.getList(listId, function (err, result) {
-		if (err) {
-			// TODO: Fail
-			console.log(err);
-			return;
-		}
-		
-		var taskTable = result.taskTable;
-		// Save task data to session
-		Session.setActiveList(taskTable);
-
-		var list = CircleBlvdClient.buildList(result.firstTask, result.taskTable);
+	var buildViewModel = function (firstTaskId, taskTable) {
+		var list = CircleBlvdClient.buildList(firstTaskId, taskTable);
 
 		// Set up the view model: figure out which tasks
 		// are mileposts, before the next meeting, etc.
@@ -40,7 +31,6 @@ angular.module('circle-blvd.controllers')
 			if (task.owner === member.name) {
 				task.ownerRelationship = "mine";
 			}
-
 
 			task.isBeforeNextMeeting = isBeforeNextMeeting;
 
@@ -63,5 +53,29 @@ angular.module('circle-blvd.controllers')
 
 		$scope.list = list;
 		$scope.listName = listName;
+	};
+
+	CircleBlvdClient.getList(listId, function (err, result) {
+		if (err) {
+			// TODO: Fail
+			console.log(err);
+			return;
+		}
+		
+		var taskTable = result.taskTable;
+		firstTaskId = result.firstTask.id;
+		// Save task data to session
+		Session.setActiveList(taskTable);
+
+		buildViewModel(firstTaskId, taskTable);
+	});
+
+	$scope.$on("$stateChangeSuccess", function (e, toState) {
+		if (toState.name === 'list') {
+			if (Session.activeList && $scope.list) {
+				// We're returning to this page with new data. Let's update.
+				buildViewModel(firstTaskId, Session.activeList);
+			}
+		}
 	});
 });

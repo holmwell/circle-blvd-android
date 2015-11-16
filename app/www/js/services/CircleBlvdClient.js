@@ -3,6 +3,7 @@ angular.module('circle-blvd.services')
 .factory('CircleBlvdClient', function ($http, Session) {
 
 	var server = "http://localhost:3000";
+	// server = "http://10.0.1.38:3000";
 
 	var handleError = function (callback) {
 		return function (data, status) {
@@ -34,9 +35,10 @@ angular.module('circle-blvd.services')
 			.error(handleError(callback));
 		},
 
-		buildList: function (firstTask, taskTable) {
+		buildList: function (firstTaskId, taskTable) {
 			var list = [];
 			// Basic 'build list' algorithm
+			var firstTask = taskTable[firstTaskId];
 			list.push(firstTask);
 			var story = firstTask;
 			var nextStory = taskTable[story.nextId];
