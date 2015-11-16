@@ -4,7 +4,10 @@
 		<ion-list>
 			<ion-item ng-repeat="task in list" 
 				class="item {{task.type}} {{task.meetingRelationship}} {{task.ownerRelationship}}" 
-				ui-sref="task({ taskId: task.id })">
+				ui-sref="task({ 
+					taskId: task.id,
+					listId: task.listId || task.projectId
+				})">
 				<div class="row row-task">
 					<div class="col-10 col-status">
 						<img ng-if="task.status === 'done'" src="img/icon-circle.png" />

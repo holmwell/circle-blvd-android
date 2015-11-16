@@ -47,7 +47,7 @@ angular.module('circle-blvd', ['ionic', 'circle-blvd.controllers', 'circle-blvd.
   })
 
   .state('task', {
-    url: '/task/:taskId',
+    url: '/task/:listId/:taskId',
     templateUrl: 'templates/task.html',
     controller: 'TaskCtrl'
   })

@@ -15,6 +15,7 @@ angular.module('circle-blvd.controllers')
 		return;
 	}
 
+	var listId = $stateParams.listId;
 	var task = list[$stateParams.taskId];
 	$scope.task = task;
 
@@ -49,6 +50,12 @@ angular.module('circle-blvd.controllers')
 			if (err) {
 				console.log('Error: ' + err.message);
 				return;
+			}
+			// Save our state.
+			if (listId === task.listId || task.projectId) {
+				var list = Session.getActiveList();
+				list[task.id] = task;
+				Session.setActiveList(list);				
 			}
 		});
 	};
