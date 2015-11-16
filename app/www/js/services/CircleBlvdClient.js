@@ -71,14 +71,14 @@ angular.module('circle-blvd.services')
 				// TODO: Should we modify the Session like this? This 
 				// design seems 'ok' but something about it doesn't feel right.
 				//
-				Session.setMember(member);
+				Session.saveMember(member);
 				callback(null, member);
 			})
 			.error(handleError(callback));
 		},
 
 		getMember: function () {
-			return Session.getMember();
+			return Session.member;
 		},
 
 		saveTask: function (task, callback) {

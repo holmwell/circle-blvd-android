@@ -1,7 +1,7 @@
 angular.module('circle-blvd.controllers')
 .controller('TaskCtrl', function ($scope, $http, $stateParams, Session, CircleBlvdClient) {
 	
-	var member = Session.getMember();
+	var member = Session.member;
 	if (!member) {
 		// TODO: Not signed in. Figure it out.
 		console.log("Member not set");
@@ -55,7 +55,7 @@ angular.module('circle-blvd.controllers')
 			if (listId === task.listId || task.projectId) {
 				var list = Session.activeList;
 				list[task.id] = task;
-				Session.setActiveList(list);
+				Session.saveActiveList(list);
 			}
 		});
 	};

@@ -65,7 +65,7 @@ angular.module('circle-blvd.controllers')
 		var taskTable = result.taskTable;
 		firstTaskId = result.firstTask.id;
 		// Save task data to session
-		Session.setActiveList(taskTable);
+		Session.saveActiveList(taskTable);
 
 		buildViewModel(firstTaskId, taskTable);
 	});
