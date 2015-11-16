@@ -1,8 +1,8 @@
 <ion-view view-title="Task" class="task-page">
   <ion-content>
   	<div class="row">
-  		<div class="col-90">
-  			<input type="text" ng-model="task.summary" 
+  		<div class="col-90 task-wrapper">
+  			<input type="text" ng-model="task.summary" placeholder="Summary"
   			ng-model-options="{ updateOn: 'blur' }" ng-change="saveTask(task)"></input>
 
   			<h5>Who's doing this?</h5>

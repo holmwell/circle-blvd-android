@@ -7,13 +7,28 @@
 	margin: auto;
 }
 
+.task-page .task-wrapper {
+	margin-top: 1.5ex;
+}
+
 .task-page input, textarea {
 	width: 100%;
 	background-color: transparent;
 	font-size: 16pt;
+	line-height: 18pt;
+
+	border: solid 1px #aaa;
+	border-right: 0;
+	border-top: 0;
+	border-bottom: 0;
+	border-radius: 3px;
+	padding-left: 10px;
 }
 .task-page textarea {
-	margin-top: 0.75ex;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	font-size: 12pt;
+	line-height: 14pt;
 }
 
 .task-page h5 {
