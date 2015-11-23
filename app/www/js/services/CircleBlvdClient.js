@@ -4,6 +4,7 @@ angular.module('circle-blvd.services')
 
 	var server = "http://localhost:3000";
 	// server = "http://10.0.1.38:3000";
+	server = "https://circleblvd.org";
 
 	var handleError = function (callback) {
 		return function (data, status) {
